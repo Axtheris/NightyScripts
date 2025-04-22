@@ -64,12 +64,17 @@ Mudae AutoClaimer is a sophisticated automation tool for Discord's Mudae bot. It
    - `wishlist.txt`: One character name per line to prioritize
    - `rare_pokemon.txt`: Additional rare Pokemon names to prioritize
 
-4. **Start the Script**:
+4. **Set Claim Emoji**:
+   - Verify the `CLAIM_EMOJI` in the config is set to the correct claim emoji (default is "❤️")
+   - This must match the emoji your server uses for claiming characters
+   - Common alternatives include "💖", "💝", "💞" or other heart variations
+
+5. **Start the Script**:
    ```
    python MudaeAutoClaimer.py
    ```
 
-5. **Initial Configuration**:
+6. **Initial Configuration**:
    - In Discord, navigate to your desired roll channel
    - Type `!setrollhere` to activate the auto-roller
 
@@ -82,7 +87,9 @@ CONFIG = {
     # Basic Settings
     "MUDAE_NAME": "Mudae",          # Mudae bot's username
     "PREFIX": "$",                   # Command prefix
-    "CLAIM_EMOJI": "❤️",             # Emoji used for claiming
+    "CLAIM_EMOJI": "❤️",             # Emoji used for claiming characters
+                                     # IMPORTANT: Must match your server's claim emoji
+                                     # Common alternatives: "💖", "💝", "💞", etc.
     
     # Roll Settings
     "ROLL_COMMANDS": ["$wa", "$wg", "$mx", "$p"],  # Commands to rotate
@@ -210,12 +217,13 @@ For best results:
 
 | Problem | Solution |
 |---------|----------|
-| Characters not being claimed | Check `MIN_KAKERA` threshold and `CLAIM_EMOJI` setting |
-| No rolls happening | Verify channel is set with `!setrollhere` and check `ROLL_INTERVAL` |
-| Script crashes | Check console for error messages and verify Mudae's embed format hasn't changed |
-| Poor character selection | Add important characters to wishlist.txt for higher priority |
-| Pokemon not being recognized | Ensure `ENABLE_POKEMON_MODE` is set to True |
-| Detection concerns | Increase stealth level with `!stealth 4` or `!stealth 5` |
+| Characters not being claimed | • Check `MIN_KAKERA` threshold<br>• **Verify `CLAIM_EMOJI` matches your server's claim emoji**<br>• Confirm the bot has permission to add reactions |
+| Wrong emoji being used | • Change the `CLAIM_EMOJI` in CONFIG to match your server's claim emoji<br>• Common options: "❤️", "💖", "💝", "💞", "♥️" |
+| No rolls happening | • Verify channel is set with `!setrollhere`<br>• Check `ROLL_INTERVAL` setting |
+| Script crashes | • Check console for error messages<br>• Verify Mudae's embed format hasn't changed |
+| Poor character selection | • Add important characters to wishlist.txt for higher priority |
+| Pokemon not being recognized | • Ensure `ENABLE_POKEMON_MODE` is set to True |
+| Detection concerns | • Increase stealth level with `!stealth 4` or `!stealth 5` |
 
 ## 🔄 Maintenance
 
